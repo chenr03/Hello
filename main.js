@@ -44,6 +44,7 @@ app.get('/hello/:name', function(request, response){
     response.send(message);
 })
 
+//INSTRUCTIONS for HOMEWORK =>
 //write a GET route definition that will do the following:
 
 // request url = /bye?name=mike  => 'see ya later mike';
@@ -52,24 +53,33 @@ app.get('/hello/:name', function(request, response){
 
 // hint you get the query parameters using : request.query.name
 
-// query
+// get using query parameter
 app.get("/bye", function(request, response){
+    // variables to query in browser under listening port 8080:
     let name = request.query.name;
     let age = request.query.age;
     let location = request.query.location;
 
+    // if query by name localhost:8080/bye?name=('place name here')
     if (name) {
-        response.send( `see ya later ${name}`)
+        response.send( `see ya later: ${name}`)
+        // else if query by age localhost:8080/bye?age=('place age here')
+        // prints see ya later (name) in browser
     } else if (age) {
         response.send(`your age is: ${age}`)
+        // else if query by location localhost:8080/bye?location=('place location here')
+        // prints your age is: (age) in browser
     } else if (location) {
         response.send(`your location is: ${location}`);
+        // else query by name localhost:8080/bye
+        // prints your location is: (location) in browser
     } else {
         response.send(`see ya later`);
+        // prints see ya later in browser
     }
 })
 
-// params
+// get using path parameter
 app.get('/bye/:name', function(request, response){
     let value = request.params.name;
     let message = (`see ya later: ${value} `)
